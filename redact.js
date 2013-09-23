@@ -1,20 +1,6 @@
 (function(){
-
-//document.getElementsByTagName('body')[0].style.setProperty('font-family','serif', 'important');
-
-
-function addCSSRule(sheet, selector, rules, index) {
-	if(sheet.insertRule) {
-		sheet.insertRule(selector + "{" + rules + "}", index);
-	}
-	else {
-		sheet.addRule(selector, rules, index);
-	}
-}
-
-
-addCSSRule(document.styleSheets[0], ".highlightedText",  "background-color : black", 0 );
-
+alert('redact on');
+document.getElementsByTagName('body')[0].style.setProperty('font-family','serif', 'important');
 
 
 $(document).click(function (){
@@ -32,6 +18,19 @@ if (selectedText.getRangeAt) {
     }
     $('.highlightedText').replaceWith(swapText);
 });
+
+
+function addCSSRule(sheet, selector, rules, index) {
+	if(sheet.insertRule) {
+		sheet.insertRule(selector + "{" + rules + "}", index);
+	}
+	else {
+		sheet.addRule(selector, rules, index);
+	}
+}
+
+
+addCSSRule(document.styleSheets[0], ".highlightedText",  "background-color : black", 0 );
 
 
 
