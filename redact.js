@@ -26,6 +26,7 @@ $(document).click(function (){
             var newNode = $('<span class="highlightedText" />')[0];
             SelRange.surroundContents(newNode);
            }
+    }
 
 });
 
