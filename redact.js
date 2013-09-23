@@ -1,3 +1,5 @@
+<script type="text/javascript" src="/js/jQuery.min.js"></script>
+
 (function(){
 
 //document.getElementsByTagName('body')[0].style.setProperty('font-family','serif', 'important');
