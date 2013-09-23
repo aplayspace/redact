@@ -5,18 +5,28 @@ document.getElementsByTagName('body')[0].style.setProperty('font-family','serif'
 
 $(document).click(function (){
 
- var selectedText = window.getSelection ? window.getSelection() : document.selection.createRange(); // second one for IE
-
-if (selectedText.getRangeAt) {
-        var range = selectedText.getRangeAt(0);
-        var newNode = document.createElement("span");
-        newNode.setAttribute('class', 'highlightedText');
-        range.surroundContents(newNode);
-    } else {
-        selectedText.pasteHTML('<span class="highlightedText">' + selectedText.htmlText + '</span>');
-
+    var SelRange;
+    if (window.getSelection) {
+        SelRange= window.getSelection().getRangeAt(0);
+    } else if (document.getSelection) {
+        SelRange= document.getSelection().getRangeAt(0);
+    } else if (document.selection) {
+        SelRange= document.selection.createRange();
     }
-    $('.highlightedText').replaceWith(swapText);
+
+    if (SelRange!= null && SelRange != '' )
+    {
+
+        if (SelRange.pasteHTML)
+        {
+            SelRange.pasteHTML('<span class="highlightedText">'+SelRange.text+'</span>');
+        }
+        else
+           {
+            var newNode = $('<span class="highlightedText" />')[0];
+            SelRange.surroundContents(newNode);
+           }
+
 });
 
 
