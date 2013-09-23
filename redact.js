@@ -6,7 +6,7 @@ document.getElementsByTagName('body')[0].style.setProperty('font-family','serif'
     // create a new script element in the DOM
     var jQscript=document.createElement('script');
     // use the latest version of the jQuery core library
-    jQscript.src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js';
+    jQscript.src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js';
     // append the new script element to the DOM
     document.documentElement.appendChild(jQscript);
 
