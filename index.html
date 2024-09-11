@@ -3,71 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redact</title>
+    <title>Your Page Title</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
+            font-family: 'Brush Script MT', cursive;
         }
-        .demo-container {
+        a {
             display: inline-block;
-            position: relative;
-            font-size: 20px;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
         }
-        .demo-text {
-            position: relative;
-            color: black;
-            white-space: nowrap;
-        }
-        .highlight {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background-color: black;
-            animation: redact 2s forwards;
-        }
-        @keyframes redact {
-            from {
-                width: 0;
-            }
-            to {
-                width: 100%;
-            }
-        }
-        .cursor {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 2px;
-            height: 100%;
-            background: black;
-            animation: moveCursor 2s forwards;
-        }
-        @keyframes moveCursor {
-            0% {
-                left: 0;
-            }
-            100% {
-                left: 100%;
-            }
+        a:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <h1>Carve Poetry Out of the Internet</h1>
-    <p>Watch the text being redacted as if using the bookmarklet:</p>
-
-    <div class="demo-container">
-        <div class="demo-text">This is a sample text to be redacted.</div>
-        <div class="highlight"></div>
-        <div class="cursor"></div>
-    </div>
-
-    <p>Drag the link below to your bookmarks bar to try it yourself:</p>
-    <a href="javascript:(function(){/* Bookmarklet code here */})">Redact & Screenshot</a>
+    <h1>Redact & Screenshot Bookmarklet</h1>
+    <p>Drag the link below to your bookmarks bar to use the Redact & Screenshot functionality on any webpage:</p>
+    <a href="javascript:(function(){function%20redactSelectedText(){var%20selection=window.getSelection();if(!selection.rangeCount)return;var%20range=selection.getRangeAt(0);var%20span=document.createElement('span');span.style.backgroundColor='black';span.style.color='black';range.surroundContents(span);}function%20addScreenshotButton(){var%20button=document.createElement('button');button.innerText='Take%20Screenshot';button.style.position='fixed';button.style.bottom='10px';button.style.right='10px';button.style.zIndex='9999';button.style.padding='10px';button.style.backgroundColor='#4CAF50';button.style.color='white';button.style.border='none';button.style.cursor='pointer';button.onclick=takeScreenshot;document.body.appendChild(button);}function%20loadHtml2Canvas(callback){var%20script=document.createElement('script');script.src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js';script.onload=callback;document.body.appendChild(script);}function%20takeScreenshot(){html2canvas(document.body,{onrendered:function(canvas){var%20imgData=canvas.toDataURL();var%20link=document.createElement('a');link.href=imgData;link.download='redacted-screenshot.png';link.click();}});}document.addEventListener('mouseup',redactSelectedText);loadHtml2Canvas(addScreenshotButton);})();">Redact & Screenshot</a>
 </body>
 </html>
-
