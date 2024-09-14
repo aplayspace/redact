@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redact</title>
+    <title>Redact Bookmarklet</title>
     <style>
         body {
             font-family: 'Brush Script MT', cursive;
@@ -13,7 +13,7 @@
 </head>
 <body>
     <h1>Redact Bookmarklet</h1>
-    <p>Drag the link below to your bookmarks bar to use the Redact & Screenshot functionality on any webpage:</p>
+    <p>Drag the link below to your bookmarks bar to use the Redact functionality on any webpage:</p>
     <a href="javascript:(function(){
         function redactSelectedText() {
             var selection = window.getSelection();
@@ -24,44 +24,8 @@
             span.style.color = 'black';
             range.surroundContents(span);
         }
-
-        function addScreenshotButton() {
-            var button = document.createElement('button');
-            button.innerText = 'Take Screenshot';
-            button.style.position = 'fixed';
-            button.style.bottom = '10px';
-            button.style.right = '10px';
-            button.style.zIndex = '9999';
-            button.style.padding = '10px';
-            button.style.backgroundColor = '#4CAF50';
-            button.style.color = 'white';
-            button.style.border = 'none';
-            button.style.cursor = 'pointer';
-            button.onclick = takeScreenshot;
-            document.body.appendChild(button);
-        }
-
-        function loadHtml2Canvas(callback) {
-            var script = document.createElement('script');
-            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js';
-            script.onload = callback;
-            document.body.appendChild(script);
-        }
-
-        function takeScreenshot() {
-            html2canvas(document.body, {
-                onrendered: function(canvas) {
-                    var imgData = canvas.toDataURL();
-                    var link = document.createElement('a');
-                    link.href = imgData;
-                    link.download = 'redacted-screenshot.png';
-                    link.click();
-                }
-            });
-        }
-
         document.addEventListener('mouseup', redactSelectedText);
-        loadHtml2Canvas(addScreenshotButton);
-    })();">Redact</a>
+        alert('Redact bookmarklet activated. Select text to redact it.');
+    })();">Redact Text</a>
 </body>
 </html>
