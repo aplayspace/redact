@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redact</title>
+    <style>
+        body {
+            font-family: 'Brush Script MT', cursive;
+        }
+        // ... existing styles ...
+    </style>
+</head>
+<body>
+    <h1>Redact bookmarklet</h1>
+    <p>Drag the link below to your bookmarks bar to use the Redact functionality on any webpage:</p>
+    <a href="javascript:(function(){
+        function redactSelectedText() {
+            var selection = window.getSelection();
+            if (!selection.rangeCount) return;
+            var range = selection.getRangeAt(0);
+            var span = document.createElement('span');
+            span.style.backgroundColor = 'black';
+            span.style.color = 'black';
+            range.surroundContents(span);
+        }
+        document.addEventListener('mouseup', redactSelectedText);
+        alert('Redact bookmarklet activated. Select text to redact it.');
+    })();">Redact Text</a>
+</body>
+</html>
