@@ -17,18 +17,21 @@
         h1 {
             font-size: 2.5em;
         }
-        a {
+        a.bookmarklet {
             display: inline-block;
             margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #4CAF50;
+            padding: 15px 30px;
+            background-color: #000000;
             color: white;
             text-decoration: none;
             border-radius: 5px;
-            font-size: 1em;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            min-width: 200px;
         }
-        a:hover {
-            background-color: #45a049;
+        a.bookmarklet:hover {
+            background-color: #333333;
         }
         .image-grid {
             display: grid;
@@ -58,11 +61,10 @@
         }
         document.addEventListener('mouseup', redactSelectedText);
         alert('Redact bookmarklet activated. Select text to redact it.');
-    })();">Redact Text</a>
+    })();" class="bookmarklet">Redact Text</a>
 
-    <h2>Examples of Redacted Work</h2>
+    <h2>Redacts</h2>
     <div class="image-grid">
-        <img src="https://via.placeholder.com/400x300?text=Redacted+Image+1" alt="Redacted Image 1">
         <img src="img/redact1.png" alt="Redacted Image 1">
         <img src="img/redact2.png" alt="Redacted Image 2">
         <img src="img/redact3.png" alt="Redacted Image 3">
