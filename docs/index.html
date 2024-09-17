@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redact Bookmarklet</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -16,6 +16,31 @@
         }
         h1 {
             font-size: 2.5em;
+        }
+        .dictionary-entry {
+            font-family: 'Playfair Display', serif;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+        }
+        .dictionary-entry .word {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .dictionary-entry .pronunciation {
+            font-style: italic;
+            color: #666;
+        }
+        .dictionary-entry .part-of-speech {
+            font-style: italic;
+        }
+        .dictionary-entry .definition {
+            margin-top: 10px;
+        }
+        .dictionary-entry .definition ol {
+            margin-top: 5px;
+            padding-left: 20px;
         }
         a.bookmarklet {
             display: inline-block;
@@ -48,6 +73,25 @@
 </head>
 <body>
     <h1>Redact Bookmarklet</h1>
+    
+    <div class="dictionary-entry">
+        <span class="word">redact</span>
+        <span class="part-of-speech"> verb</span><br>
+        <span class="pronunciation">re·​dact ri-ˈdakt</span><br>
+        redacted; redacting; redacts<br>
+        <em>Synonyms of redact</em><br>
+        <span class="part-of-speech">transitive verb</span>
+        
+        <div class="definition">
+            <ol>
+                <li>: to put in writing : frame</li>
+                <li>: to select or adapt (as by obscuring or removing sensitive information) for publication or release<br>
+                broadly : edit</li>
+                <li>: to obscure or remove (text) from a document prior to publication or release</li>
+            </ol>
+        </div>
+    </div>
+
     <p>Drag the link below to your bookmarks bar to use the Redact functionality on any webpage:</p>
     <a href="javascript:(function(){
         function redactSelectedText() {
@@ -63,13 +107,13 @@
         alert('Redact bookmarklet activated. Select text to redact it.');
     })();" class="bookmarklet">Redact Text</a>
 
-    <h2>Redacts</h2>
+    <h2>Examples of Redacted Work</h2>
     <div class="image-grid">
-        <img src="redact1.png" alt="Redacted Image 1">
-        <img src="redact2.png" alt="Redacted Image 2">
-        <img src="redact3.png" alt="Redacted Image 3">
-        <img src="redact4.png" alt="Redacted Image 4">
-        <img src="redact5.png" alt="Redacted Image 5">
+        <img src="img/redact1.png" alt="Redacted Image 1">
+        <img src="img/redact2.png" alt="Redacted Image 2">
+        <img src="img/redact3.png" alt="Redacted Image 3">
+        <img src="img/redact4.png" alt="Redacted Image 4">
+        <img src="img/redact5.png" alt="Redacted Image 5">
     </div>
 </body>
 </html>
