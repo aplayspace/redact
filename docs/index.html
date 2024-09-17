@@ -55,23 +55,25 @@
             margin-top: 5px;
             padding-left: 20px;
         }
+        .bookmarklet-container {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+        }
         a.bookmarklet {
             display: inline-block;
-            margin-top: 20px;
-            padding: 15px 30px;
+            width: 20px;
+            height: 20px;
             background-color: #000000;
-            color: white;
             text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.2em;
-            font-weight: bold;
-            text-align: center;
-            min-width: 200px;
-            transition: color 0.3s ease;
+            font-size: 0;
+            margin-right: 10px;
         }
         a.bookmarklet:hover {
-            background-color: #000000;
-            color: black;
+            opacity: 0.8;
+        }
+        .bookmarklet-label {
+            font-size: 1em;
         }
         .image-grid {
             display: grid;
@@ -114,19 +116,22 @@
         Sometimes they can make you and a friend laugh. 
         </p>
 
-    <a href="javascript:(function(){
-        function redactSelectedText() {
-            var selection = window.getSelection();
-            if (!selection.rangeCount) return;
-            var range = selection.getRangeAt(0);
-            var span = document.createElement('span');
-            span.style.backgroundColor = 'black';
-            span.style.color = 'black';
-            range.surroundContents(span);
-        }
-        document.addEventListener('mouseup', redactSelectedText);
-        alert('Redact bookmarklet activated. Select text to redact it.');
-    })();" class="bookmarklet">Redact</a>
+        <div class="bookmarklet-container">
+            <a href="javascript:(function(){
+                function redactSelectedText() {
+                    var selection = window.getSelection();
+                    if (!selection.rangeCount) return;
+                    var range = selection.getRangeAt(0);
+                    var span = document.createElement('span');
+                    span.style.backgroundColor = 'black';
+                    span.style.color = 'black';
+                    range.surroundContents(span);
+                }
+                document.addEventListener('mouseup', redactSelectedText);
+                alert('Redact bookmarklet activated. Select text to redact it.');
+            })();" class="bookmarklet">Redact</a>
+            <span class="bookmarklet-label">← Drag this to your bookmarks bar</span>
+        </div>
 
     <h2>Redacted Work</h2>
     <div class="image-grid">
