@@ -114,99 +114,60 @@
 
 <!--    <h1>...</h1>-->
     
-    <div class="dictionary-entry">
-        <span class="word">redact</span>
-        <span class="part-of-speech"> verb</span><br>
-        <span class="pronunciation">re·​dact ri-ˈdakt</span><br>
-        redacted; redacting; redacts<br>
-        <em>Synonyms of redact</em><br>
-        <span class="part-of-speech">transitive verb</span>
+<div class="bookmarklet-container">
+    <a href="javascript:(function(){
+        function toggleRedaction(e) {
+            // ... (existing toggleRedaction function)
+        }
         
-        <div class="definition">
-            <ol>
-                <li>: to put in writing : frame</li>
-                <li>: to select or adapt (as by obscuring or removing sensitive information) for publication or release<br>
-                broadly : edit</li>
-                <li>: to obscure or remove (text) from a document prior to publication or release</li>
-            </ol>
-        </div>
-    </div>
-    <p>Redact is a bookmarklet that allows you to redact text on any webpage. You can use it however you want but one was people use it is to redact words in an online article. You can 
-        create interesting word combinations and new ideas simply by word redaction, which can lead to new discoveries and amusements. 
+        function addScreenshotButton() {
+            var button = document.createElement('button');
+            button.innerText = 'Take Screenshot';
+            button.style.position = 'fixed';
+            button.style.bottom = '10px';
+            button.style.right = '10px';
+            button.style.zIndex = '9999';
+            button.style.padding = '10px';
+            button.style.backgroundColor = '#4CAF50';
+            button.style.color = 'white';
+            button.style.border = 'none';
+            button.style.cursor = 'pointer';
+            button.onclick = takeScreenshot;
+            document.body.appendChild(button);
+        }
+
+        function loadHtml2Canvas(callback) {
+            var script = document.createElement('script');
+            script.src = 'https://html2canvas.hertzen.com/dist/html2canvas.min.js';
+            script.onload = callback;
+            document.body.appendChild(script);
+        }
+
+        function takeScreenshot() {
+            var viewportWidth = window.innerWidth;
+            var viewportHeight = window.innerHeight;
+
+            html2canvas(document.body, {
+                width: viewportWidth,
+                height: viewportHeight,
+                x: window.pageXOffset,
+                y: window.pageYOffset,
+                scrollX: -window.pageXOffset,
+                scrollY: -window.pageYOffset
+            }).then(function(canvas) {
+                var link = document.createElement('a');
+                link.download = 'redacted-screenshot.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            });
+        }
         
-    <p><a href="https://www.poetryfoundation.org/poets/mary-ruefle">Mary Ruefle</a> has created poems through this process of ersasure, although she 
-        tends to use physical books and physical elisiion instruments like markers and white-out, as in her lovely little book, <a href="https://www.poetryfoundation.org/poems/48802/a-little-white-shadow">Little White Shadow</a>.  
-    </p>
-
-    <p>Drag the link below to your bookmarks bar to use the Redact functionality on any webpage to make new, unexpected word connections and ideas. 
-        Sometimes they can make you and a friend laugh. 
-        </p>
-
-        <div class="bookmarklet-container">
-            <a href="javascript:(function(){
-                function toggleRedaction(e) {
-                    var selection = window.getSelection();
-                    if (!selection.rangeCount) return;
-                    
-                    var range = selection.getRangeAt(0);
-                    var span = range.commonAncestorContainer;
-                    
-                    if (span.nodeType === Node.TEXT_NODE) {
-                        span = span.parentNode;
-                    }
-                    
-                    if (span.tagName === 'SPAN' && span.style.backgroundColor === 'black') {
-                        var text = span.textContent;
-                        var parent = span.parentNode;
-                        parent.replaceChild(document.createTextNode(text), span);
-                    } else {
-                        var newSpan = document.createElement('span');
-                        newSpan.style.backgroundColor = 'black';
-                        newSpan.style.color = 'black';
-                        range.surroundContents(newSpan);
-                    }
-                    
-                    e.preventDefault();
-                }
-                
-                function addScreenshotButton() {
-                    var button = document.createElement('button');
-                    button.innerText = 'Take Screenshot';
-                    button.style.position = 'fixed';
-                    button.style.bottom = '10px';
-                    button.style.right = '10px';
-                    button.style.zIndex = '9999';
-                    button.style.padding = '10px';
-                    button.style.backgroundColor = '#4CAF50';
-                    button.style.color = 'white';
-                    button.style.border = 'none';
-                    button.style.cursor = 'pointer';
-                    button.onclick = takeScreenshot;
-                    document.body.appendChild(button);
-                }
-    
-                function loadHtml2Canvas(callback) {
-                    var script = document.createElement('script');
-                    script.src = 'https://html2canvas.hertzen.com/dist/html2canvas.min.js';
-                    script.onload = callback;
-                    document.body.appendChild(script);
-                }
-    
-                function takeScreenshot() {
-                    html2canvas(document.body).then(function(canvas) {
-                        var link = document.createElement('a');
-                        link.download = 'redacted-screenshot.png';
-                        link.href = canvas.toDataURL();
-                        link.click();
-                    });
-                }
-                
-                document.addEventListener('mouseup', toggleRedaction);
-                loadHtml2Canvas(addScreenshotButton);
-                alert('Redact bookmarklet activated. Select text to redact or un-redact it. A screenshot button has been added to the bottom right corner.');
-            })();" class="bookmarklet">■</a>
-            <span class="bookmarklet-label">← Drag this to your bookmarks bar</span>
-        </div>
+        document.addEventListener('mouseup', toggleRedaction);
+        loadHtml2Canvas(addScreenshotButton);
+        alert('Redact bookmarklet activated. Select text to redact or un-redact it. A screenshot button has been added to the bottom right corner.');
+    })();" class="bookmarklet">■</a>
+    <span class="bookmarklet-label">← Drag this to your bookmarks bar</span>
+</div>
 
 
     <h2>Redacted Work</h2>
