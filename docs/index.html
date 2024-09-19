@@ -140,60 +140,9 @@ create interesting word combinations and new ideas simply by word redaction, whi
 </p>
 
 <div class="bookmarklet-container">
-    <a href="javascript:(function(){
-        function toggleRedaction(e) {
-            // ... (existing toggleRedaction function)
-        }
-        
-        function addScreenshotButton() {
-            var button = document.createElement('button');
-            button.innerText = 'Take Screenshot';
-            button.style.position = 'fixed';
-            button.style.bottom = '10px';
-            button.style.right = '10px';
-            button.style.zIndex = '9999';
-            button.style.padding = '10px';
-            button.style.backgroundColor = '#4CAF50';
-            button.style.color = 'white';
-            button.style.border = 'none';
-            button.style.cursor = 'pointer';
-            button.onclick = takeScreenshot;
-            document.body.appendChild(button);
-        }
-
-        function loadHtml2Canvas(callback) {
-            var script = document.createElement('script');
-            script.src = 'https://html2canvas.hertzen.com/dist/html2canvas.min.js';
-            script.onload = callback;
-            document.body.appendChild(script);
-        }
-
-        function takeScreenshot() {
-            var viewportWidth = window.innerWidth;
-            var viewportHeight = window.innerHeight;
-
-            html2canvas(document.body, {
-                width: viewportWidth,
-                height: viewportHeight,
-                x: window.pageXOffset,
-                y: window.pageYOffset,
-                scrollX: -window.pageXOffset,
-                scrollY: -window.pageYOffset
-            }).then(function(canvas) {
-                var link = document.createElement('a');
-                link.download = 'redacted-screenshot.png';
-                link.href = canvas.toDataURL();
-                link.click();
-            });
-        }
-        
-        document.addEventListener('mouseup', toggleRedaction);
-        loadHtml2Canvas(addScreenshotButton);
-        alert('Redact bookmarklet activated. Select text to redact or un-redact it. A screenshot button has been added to the bottom right corner.');
-    })();" class="bookmarklet">■</a>
+    <a href="javascript:(function(){var script=document.createElement('script');script.src='https://www.aplayspace.com/redact/bookmarklet.js';document.body.appendChild(script);})();" class="bookmarklet">■</a>
     <span class="bookmarklet-label">← Drag this to your bookmarks bar</span>
 </div>
-
 
     <h2>Redacted Work</h2>
     <div class="image-grid">
