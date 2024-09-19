@@ -115,19 +115,17 @@
         width: 100%;
         height: 100%;
         background-color: rgba(0,0,0,0.9);
-        text-align: center;
+        overflow: auto; /* Allow scrolling if image is larger than viewport */
     }
 
     .lightbox-content {
         margin: auto;
         display: block;
-        max-width: 90%;
-        max-height: 90%;
-        margin-top: 2%;
+        padding: 20px 0;
     }
 
     .close {
-        position: absolute;
+        position: fixed; /* Change to fixed */
         top: 15px;
         right: 35px;
         color: #f1f1f1;
@@ -173,7 +171,7 @@ create interesting word combinations and new ideas simply by word redaction, whi
     <span class="bookmarklet-label">← Drag this to your bookmarks bar</span>
 </div>
 
-h2>Redacted Work</h2>
+<h2>Redacted Work</h2>
 <p>Send your redacted work to <a href="mailto:mark.matthews@gmail.com" style="background-color: black; color: black;">mark.matthews@gmail.com</a></p>
 <div class="image-grid">
     <img src="redact1.png" alt="Redacted Image 1" onclick="openLightbox(this)">
@@ -193,6 +191,31 @@ h2>Redacted Work</h2>
         var lightboxImg = document.getElementById("lightbox-img");
         lightbox.style.display = "block";
         lightboxImg.src = img.src;
+        lightboxImg.style.width = 'auto';
+        lightboxImg.style.height = 'auto';
+        
+        // Center the image
+        lightboxImg.style.position = 'absolute';
+        lightboxImg.style.top = '50%';
+        lightboxImg.style.left = '50%';
+        lightboxImg.style.transform = 'translate(-50%, -50%)';
+        
+        // Adjust positioning if image is larger than viewport
+        lightboxImg.onload = function() {
+            if (this.height > window.innerHeight) {
+                this.style.top = '0';
+                this.style.transform = 'translateX(-50%)';
+            }
+            if (this.width > window.innerWidth) {
+                this.style.left = '0';
+                this.style.transform = 'translateY(-50%)';
+            }
+            if (this.height > window.innerHeight && this.width > window.innerWidth) {
+                this.style.top = '0';
+                this.style.left = '0';
+                this.style.transform = 'none';
+            }
+        }
     }
 
     function closeLightbox() {
